@@ -1,42 +1,25 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>Digital-Footprint-Checker</title>
+  <meta charset="UTF-8">
+  <title>Digital-Footprint-Checker - Giriş</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h2>CSV Yükleme</h2>
-    <form id="uploadForm" enctype="multipart/form-data">
-        <input type="file" name="file" id="fileInput" accept=".csv" required>
-        <button type="submit">Yükle ve Analiz Et</button>
-    </form>
+  <h1>Digital-Footprint-Checker</h1>
 
-    <h3>Analiz Sonucu:</h3>
-    <pre id="result"></pre>
+  <div id="authSection">
+    <h2>Kayıt Ol</h2>
+    <input type="text" id="regUsername" placeholder="Kullanıcı Adı">
+    <input type="password" id="regPassword" placeholder="Parola">
+    <button onclick="registerUser()">Kayıt Ol</button>
 
-    <script>
-        const form = document.getElementById('uploadForm');
-        const result = document.getElementById('result');
+    <h2>Giriş Yap</h2>
+    <input type="text" id="loginUsername" placeholder="Kullanıcı Adı">
+    <input type="password" id="loginPassword" placeholder="Parola">
+    <button onclick="loginUser()">Giriş Yap</button>
+  </div>
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Sayfa reload olmasın
-
-            const fileInput = document.getElementById('fileInput');
-            const formData = new FormData();
-            formData.append('file', fileInput.files[0]);
-
-            fetch('http://127.0.0.1:5000/upload_csv', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                result.textContent = JSON.stringify(data, null, 2);
-            })
-            .catch(err => {
-                result.textContent = 'Hata: ' + err;
-            });
-        });
-    </script>
+  <script src="js/auth.js"></script>
 </body>
 </html>
