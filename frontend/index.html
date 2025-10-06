@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital-Footprint-Checker</title>
+</head>
+<body>
+    <h2>CSV Yükleme</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput" accept=".csv" required>
+        <button type="submit">Yükle ve Analiz Et</button>
+    </form>
+
+    <h3>Analiz Sonucu:</h3>
+    <pre id="result"></pre>
+
+    <script>
+        const form = document.getElementById('uploadForm');
+        const result = document.getElementById('result');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Sayfa reload olmasın
+
+            const fileInput = document.getElementById('fileInput');
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            fetch('http://127.0.0.1:5000/upload_csv', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                result.textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(err => {
+                result.textContent = 'Hata: ' + err;
+            });
+        });
+    </script>
+</body>
+</html>
