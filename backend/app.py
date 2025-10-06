@@ -2,21 +2,32 @@ from flask import Flask, request, jsonify
 import pandas as pd
 import os
 from datetime import datetime
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
-UPLOAD_FOLDER = os.path.join(os.getcwd(), 'data')
+# Backend dosyasına göre proje kökünde data klasörü
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(BASE_DIR, '../data')
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Basit "analiz" fonksiyonu
+# Basit analiz fonksiyonu
 def analyze_profile(profile):
     sensitive_info = {}
     risk_score = 0
-    
+
     if pd.notna(profile.get('email')):
         sensitive_info['emails'] = [profile['email']]
         risk_score += 50
 
+    # Örnek: telefon numarası varsa ek puan
+    if pd.notna(profile.get('phone')):
+        sensitive_info['phones'] = [profile['phone']]
+        risk_score += 30
+
+    # Risk seviyesi belirleme
     risk_level = "Low"
     if risk_score >= 70:
         risk_level = "High"
