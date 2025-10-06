@@ -1,0 +1,6 @@
+Flask
+pandas
+openpyxl
+Pillow
+exifread
+python-dotenv
