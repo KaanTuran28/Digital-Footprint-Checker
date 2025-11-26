@@ -1,0 +1,20 @@
+{% extends "_layout.html" %}
+{% block content %}
+    <style>
+        .password-wrapper { position: relative; }
+        .toggle-password { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; user-select: none; }
+    </style>
+    <article>
+        <hgroup><h1>Giriş Yap</h1><h2>Analiz paneline erişmek için giriş yapın.</h2></hgroup>
+        <form method="post" novalidate>
+            <input type="text" name="username" placeholder="Kullanıcı Adı" required>
+            <label for="password">Şifre</label>
+            <div class="password-wrapper">
+                <input type="password" id="password" name="password" placeholder="Şifre" required>
+                <span class="toggle-password">👁️</span>
+            </div>
+            <button type="submit">Giriş Yap</button>
+        </form>
+    </article>
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}

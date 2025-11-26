@@ -1,0 +1,39 @@
+{% extends "_layout.html" %}
+{% block content %}
+    <style>
+        .password-wrapper { position: relative; }
+        .toggle-password { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; user-select: none; }
+        #password-rules { list-style: none; padding: 0; margin-top: 0.5rem; }
+        #password-rules li { color: #c22929; }
+        #password-rules li.valid { color: #28a745; text-decoration: line-through; }
+    </style>
+    <article>
+        <hgroup><h1>Yeni Hesap Oluştur</h1><h2>Güvenli bir şifre ile hesabınızı oluşturun.</h2></hgroup>
+        <form method="post" novalidate>
+            <input type="text" name="username" placeholder="Kullanıcı Adı" required>
+            <input type="email" name="email" placeholder="E-posta Adresi" required>
+            
+            <label for="password">Şifre</label>
+            <div class="password-wrapper">
+                <input type="password" id="password" name="password" placeholder="Şifre" required>
+                <span class="toggle-password">👁️</span>
+            </div>
+            
+            <label for="password2">Şifreyi Doğrula</label>
+            <div class="password-wrapper">
+                <input type="password" id="password2" name="password2" placeholder="Şifreyi Tekrar Girin" required>
+                <span class="toggle-password">👁️</span>
+            </div>
+            
+            <ul id="password-rules">
+                <li id="rule-length">En az 8 karakter uzunluğunda olmalı</li>
+                <li id="rule-uppercase">En az bir büyük harf (A-Z) içermeli</li>
+                <li id="rule-lowercase">En az bir küçük harf (a-z) içermeli</li>
+                <li id="rule-number">En az bir rakam (0-9) içermeli</li>
+                <li id="rule-special">En az bir özel karakter (!, @, #, $ vb.) içermeli</li>
+            </ul>
+            <button type="submit">Kayıt Ol</button>
+        </form>
+    </article>
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}

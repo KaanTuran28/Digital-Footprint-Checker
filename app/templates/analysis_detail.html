@@ -1,0 +1,26 @@
+{% extends "_layout.html" %}
+{% block content %}
+    <hgroup>
+        <h1>{{ analysis.created_at.strftime('%d %B %Y - %H:%M') }} Analiz Sonucu</h1>
+        <a href="{{ url_for('main.dashboard') }}">&larr; Kontrol Paneline Geri Dön</a>
+    </hgroup>
+    <article>
+        {% for item in items %}
+            <details open>
+                <summary>
+                    <b>{{ item.platform.capitalize() }}:</b> {{ item.profile_username }} - 
+                    <span><b>{{ item.risk_level }} Risk ({{ item.risk_score }}/100)</b></span>
+                </summary>
+                {% if item.found_data_json %}
+                    <ul>
+                    {% for key, value in item.found_data_json.items() %}
+                        <li><strong>{{ key.upper() }}:</strong> {{ value }}</li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Riskli bir bilgi bulunamadı.</p>
+                {% endif %}
+            </details>
+        {% endfor %}
+    </article>
+{% endblock %}

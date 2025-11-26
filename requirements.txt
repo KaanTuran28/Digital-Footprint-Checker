@@ -1,6 +1,7 @@
 Flask
-pandas
-openpyxl
-Pillow
-exifread
+Flask-Login
+Flask-SQLAlchemy
 python-dotenv
+playwright
+waitress
+werkzeug
