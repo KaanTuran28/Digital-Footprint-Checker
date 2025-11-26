@@ -1,0 +1,28 @@
+{% extends "_layout.html" %}
+{% block content %}
+    <hgroup><h1>Profilim</h1><h2>Hoş geldin, {{ current_user.username }}!</h2></hgroup>
+    <div class="grid">
+        <article>
+            <h3 style="margin-bottom: 1.5rem;">🔑 Şifre Değiştir</h3>
+            <form method="post">
+                <label for="current_password">Mevcut Şifreniz</label>
+                <input type="password" id="current_password" name="current_password" placeholder="Mevcut şifrenizi girin" required>
+                <label for="new_password">Yeni Şifreniz</label>
+                <input type="password" id="new_password" name="new_password" placeholder="Yeni şifrenizi girin" required>
+                <label for="new_password2">Yeni Şifreyi Doğrula</label>
+                <input type="password" id="new_password2" name="new_password2" placeholder="Yeni şifreyi tekrar girin" required>
+                <button type="submit" class="contrast">Şifreyi Güncelle</button>
+            </form>
+        </article>
+        <article>
+            <h3 style="margin-bottom: 1.5rem;">ℹ️ Analiz Aracı Nasıl Kullanılır?</h3>
+            <p>Dijital ayak izinizi analiz etmek için:</p>
+            <ol>
+                <li><strong>Kontrol Paneline Gidin.</strong></li>
+                <li><strong>Kullanıcı Adı Girin:</strong> Platform kartındaki kutucuğa yazın.</li>
+                <li><strong>Derin Tarama:</strong> Detaylı analiz için kutucuğu işaretleyin.</li>
+                <li><strong>Başlatın:</strong> "Tara" butonuna basın ve bekleyin.</li>
+            </ol>
+        </article>
+    </div>
+{% endblock %}
