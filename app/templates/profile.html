@@ -1,28 +1,66 @@
-{% extends "_layout.html" %}
-{% block content %}
-    <hgroup><h1>Profilim</h1><h2>Hoş geldin, {{ current_user.username }}!</h2></hgroup>
-    <div class="grid">
-        <article>
-            <h3 style="margin-bottom: 1.5rem;">🔑 Şifre Değiştir</h3>
-            <form method="post">
-                <label for="current_password">Mevcut Şifreniz</label>
-                <input type="password" id="current_password" name="current_password" placeholder="Mevcut şifrenizi girin" required>
-                <label for="new_password">Yeni Şifreniz</label>
-                <input type="password" id="new_password" name="new_password" placeholder="Yeni şifrenizi girin" required>
-                <label for="new_password2">Yeni Şifreyi Doğrula</label>
-                <input type="password" id="new_password2" name="new_password2" placeholder="Yeni şifreyi tekrar girin" required>
-                <button type="submit" class="contrast">Şifreyi Güncelle</button>
-            </form>
-        </article>
-        <article>
-            <h3 style="margin-bottom: 1.5rem;">ℹ️ Analiz Aracı Nasıl Kullanılır?</h3>
-            <p>Dijital ayak izinizi analiz etmek için:</p>
-            <ol>
-                <li><strong>Kontrol Paneline Gidin.</strong></li>
-                <li><strong>Kullanıcı Adı Girin:</strong> Platform kartındaki kutucuğa yazın.</li>
-                <li><strong>Derin Tarama:</strong> Detaylı analiz için kutucuğu işaretleyin.</li>
-                <li><strong>Başlatın:</strong> "Tara" butonuna basın ve bekleyin.</li>
-            </ol>
-        </article>
-    </div>
-{% endblock %}
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    
+    <link rel="stylesheet" href="static/css/style.css">
+    
+    <title>Profilim - Dijital Ayak İzi</title>
+</head>
+<body>
+    <main class="container">
+        
+        <nav>
+            <ul>
+                <li><strong>👣 Dijital Ayak İzi Analiz Aracı</strong></li>
+            </ul>
+            <ul>
+                <li><a href="dashboard.html">Kontrol Paneli</a></li>
+                <li><a href="profile.html" role="button" class="outline">Profilim</a></li>
+                <li><a href="index.html">Çıkış Yap</a></li>
+            </ul>
+        </nav>
+        <hr>
+
+        <hgroup>
+            <h1>Profilim</h1>
+            <h2>Hoş geldin, Kullanıcı!</h2>
+        </hgroup>
+
+        <div class="grid">
+            
+            <article>
+                <h3 style="margin-bottom: 1.5rem;">🔑 Şifre Değiştir</h3>
+                <form>
+                    <label for="current_password">Mevcut Şifreniz</label>
+                    <input type="password" id="current_password" name="current_password" placeholder="Mevcut şifrenizi girin" required>
+                    
+                    <label for="new_password">Yeni Şifreniz</label>
+                    <input type="password" id="new_password" name="new_password" placeholder="Yeni şifrenizi girin" required>
+                    
+                    <label for="new_password2">Yeni Şifreyi Doğrula</label>
+                    <input type="password" id="new_password2" name="new_password2" placeholder="Yeni şifreyi tekrar girin" required>
+                    
+                    <button type="submit" class="contrast">Şifreyi Güncelle</button>
+                </form>
+            </article>
+
+            <article>
+                <h3 style="margin-bottom: 1.5rem;">ℹ️ Analiz Aracı Nasıl Kullanılır?</h3>
+                <p>Dijital ayak izinizi analiz etmek için:</p>
+                <ol>
+                    <li><strong>Kontrol Paneline Gidin.</strong></li>
+                    <li><strong>Kullanıcı Adı Girin:</strong> Platform kartındaki kutucuğa yazın.</li>
+                    <li><strong>Derin Tarama:</strong> Detaylı analiz için kutucuğu işaretleyin.</li>
+                    <li><strong>Başlatın:</strong> "Tara" butonuna basın ve bekleyin.</li>
+                </ol>
+            </article>
+            
+        </div>
+
+    </main>
+</body>
+</html>

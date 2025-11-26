@@ -1,11 +1,60 @@
-{% extends "_layout.html" %}
-{% block content %}
-    <article style="text-align: center;">
-        <hgroup>
-            <h1>Dijital Ayak İzinizi Keşfedin</h1>
-            <h2>Herkese açık sosyal medya profillerinizi analiz ederek gizlilik risklerinizi ortaya çıkarın.</h2>
-        </hgroup>
-        <p>Bu araç, Instagram ve X gibi platformlardaki verilerinizi tarar ve hassas bilgileri tespit ederek size bir risk puanı sunar.</p>
-        <footer><a href="{{ url_for('main.register') }}" role="button" class="contrast">Hemen Ücretsiz Başla</a></footer>
-    </article>
-{% endblock %}
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    
+    <link rel="stylesheet" href="static/css/style.css">
+    
+    <title>Dijital Ayak İzi Analiz Aracı</title>
+</head>
+<body>
+    <main class="container">
+        <nav>
+            <ul>
+                <li><strong>👣 Dijital Ayak İzi Analiz Aracı</strong></li>
+            </ul>
+            <ul>
+                <li><a href="login.html">Giriş Yap</a></li>
+                <li><a href="register.html">Kayıt Ol</a></li>
+            </ul>
+        </nav>
+        <hr>
+        <article style="text-align: center; padding: 3rem 1rem;">
+            <hgroup>
+                <h1>👣 Dijital Ayak İzinizi Keşfedin</h1>
+                <h2>Herkese açık sosyal medya profillerinizi analiz ederek gizlilik risklerinizi görün.</h2>
+            </hgroup>
+            
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                Bu araç; <strong>Instagram, X (Twitter) ve LinkedIn</strong> platformlarındaki herkese açık verilerinizi tarar.
+                Paylaşımlarınızda ve biyografinizde unuttuğunuz hassas bilgileri tespit ederek size bir <strong>güvenlik risk puanı</strong> sunar.
+            </p>
+
+            <footer>
+                <a href="register.html" role="button" class="contrast" style="font-size: 1.2rem; padding: 15px 40px;">
+                    Hemen Ücretsiz Başla 🚀
+                </a>
+            </footer>
+        </article>
+
+        <div class="grid" style="margin-top: 2rem;">
+            <article style="text-align: center;">
+                <h3>🛡️ Güvenlik Analizi</h3>
+                <small>E-posta, telefon ve konum gibi riskli verileri tespit edin.</small>
+            </article>
+            <article style="text-align: center;">
+                <h3>📊 Risk Puanı</h3>
+                <small>Profil güvenliğinizi 0 ile 100 arasında bir puanla ölçün.</small>
+            </article>
+            <article style="text-align: center;">
+                <h3>🕵️ Derin Tarama</h3>
+                <small>Sadece profilinizi değil, son gönderilerinizi de analiz edin.</small>
+            </article>
+        </div>
+
+    </main>
+</body>
+</html>

@@ -40,6 +40,7 @@ async def scrape_profile(platform, username, deep_scan=True):
     target_url = config["profile_url"].format(username)
 
     async with async_playwright() as p:
+        # headless=True: Tarayıcıyı görünmez modda çalıştırır
         browser = await p.chromium.launch(headless=True)
         context = None
 
@@ -83,14 +84,13 @@ async def scrape_profile(platform, username, deep_scan=True):
             
             print(f"Profil içeriği taranıyor ({platform})...")
             
-            # HTML Elementlerinden Veri Çekme (Hibrid Yapı)
             scraped_texts = []
             
-            # 1. Biyografi vb.
+            # 1. Sayfa metnini al (Biyografi vb.)
             body_text = await page.locator('body').inner_text()
-            scraped_texts.append(body_text[:1000]) # İlk 1000 karakter genel bilgi
+            scraped_texts.append(body_text[:2000])
 
-            # 2. Gönderiler (Deep Scan veya Default)
+            # 2. Gönderileri Tara
             scroll_count = 3 if deep_scan else 1
             for i in range(scroll_count):
                 await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")

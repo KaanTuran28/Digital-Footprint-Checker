@@ -1,20 +1,50 @@
-{% extends "_layout.html" %}
-{% block content %}
-    <style>
-        .password-wrapper { position: relative; }
-        .toggle-password { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; user-select: none; }
-    </style>
-    <article>
-        <hgroup><h1>Giriş Yap</h1><h2>Analiz paneline erişmek için giriş yapın.</h2></hgroup>
-        <form method="post" novalidate>
-            <input type="text" name="username" placeholder="Kullanıcı Adı" required>
-            <label for="password">Şifre</label>
-            <div class="password-wrapper">
-                <input type="password" id="password" name="password" placeholder="Şifre" required>
-                <span class="toggle-password">👁️</span>
-            </div>
-            <button type="submit">Giriş Yap</button>
-        </form>
-    </article>
-    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
-{% endblock %}
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    
+    <link rel="stylesheet" href="static/css/style.css">
+    
+    <title>Giriş Yap - Dijital Ayak İzi</title>
+</head>
+<body>
+    <main class="container">
+        
+        <nav>
+            <ul>
+                <li><strong>👣 Dijital Ayak İzi Analiz Aracı</strong></li>
+            </ul>
+            <ul>
+                <li><a href="login.html" role="button">Giriş Yap</a></li>
+                <li><a href="register.html">Kayıt Ol</a></li>
+            </ul>
+        </nav>
+        <hr>
+
+        <article>
+            <hgroup>
+                <h1>Giriş Yap</h1>
+                <h2>Analiz paneline erişmek için giriş yapın.</h2>
+            </hgroup>
+            
+            <form>
+                <input type="text" name="username" placeholder="Kullanıcı Adı" required>
+                
+                <label for="password">Şifre</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" placeholder="Şifre" required>
+                    <span class="toggle-password">👁️</span>
+                </div>
+                
+                <button type="submit">Giriş Yap</button>
+            </form>
+        </article>
+
+        <script src="static/js/auth.js"></script>
+
+    </main>
+</body>
+</html>

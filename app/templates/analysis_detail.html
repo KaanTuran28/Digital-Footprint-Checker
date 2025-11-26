@@ -1,26 +1,70 @@
-{% extends "_layout.html" %}
-{% block content %}
-    <hgroup>
-        <h1>{{ analysis.created_at.strftime('%d %B %Y - %H:%M') }} Analiz Sonucu</h1>
-        <a href="{{ url_for('main.dashboard') }}">&larr; Kontrol Paneline Geri Dön</a>
-    </hgroup>
-    <article>
-        {% for item in items %}
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    
+    <link rel="stylesheet" href="static/css/style.css">
+    
+    <title>Analiz Detayı - Dijital Ayak İzi</title>
+</head>
+<body>
+    <main class="container">
+        
+        <nav>
+            <ul>
+                <li><strong>👣 Dijital Ayak İzi Analiz Aracı</strong></li>
+            </ul>
+            <ul>
+                <li><a href="dashboard.html">Kontrol Paneli</a></li>
+                <li><a href="profile.html">Profilim</a></li>
+                <li><a href="index.html">Çıkış Yap</a></li>
+            </ul>
+        </nav>
+        <hr>
+
+        <hgroup>
+            <h1>26 Kasım 2025 - 14:45 Analiz Sonucu</h1>
+            <a href="dashboard.html">&larr; Kontrol Paneline Geri Dön</a>
+        </hgroup>
+
+        <article>
+            
             <details open>
                 <summary>
-                    <b>{{ item.platform.capitalize() }}:</b> {{ item.profile_username }} - 
-                    <span><b>{{ item.risk_level }} Risk ({{ item.risk_score }}/100)</b></span>
+                    <b>X:</b> elonmusk - 
+                    <span class="risk-Yüksek">Yüksek Risk (85/100)</span>
                 </summary>
-                {% if item.found_data_json %}
-                    <ul>
-                    {% for key, value in item.found_data_json.items() %}
-                        <li><strong>{{ key.upper() }}:</strong> {{ value }}</li>
-                    {% endfor %}
-                    </ul>
-                {% else %}
-                    <p>Riskli bir bilgi bulunamadı.</p>
-                {% endif %}
+                <ul>
+                    <li><strong>EMAIL:</strong> elon.musk@x.com</li>
+                    <li><strong>KONUM:</strong> Texas, USA</li>
+                    <li><strong>DOĞUM TARİHİ:</strong> 28 Haziran 1971</li>
+                </ul>
             </details>
-        {% endfor %}
-    </article>
-{% endblock %}
+
+            <details open>
+                <summary>
+                    <b>Instagram:</b> nasa - 
+                    <span class="risk-Orta">Orta Risk (45/100)</span>
+                </summary>
+                <ul>
+                    <li><strong>KONUM:</strong> Washington, DC</li>
+                    <li><strong>UNVAN:</strong> Government Organization</li>
+                </ul>
+            </details>
+
+            <details open>
+                <summary>
+                    <b>Linkedin:</b> billgates - 
+                    <span class="risk-Düşük">Düşük Risk (0/100)</span>
+                </summary>
+                <p>Riskli bir bilgi bulunamadı.</p>
+            </details>
+
+        </article>
+
+    </main>
+</body>
+</html>
