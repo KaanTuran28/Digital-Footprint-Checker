@@ -16,8 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'length': document.getElementById('rule-length'),
             'uppercase': document.getElementById('rule-uppercase'),
             'lowercase': document.getElementById('rule-lowercase'),
-            'number': document.getElementById('rule-number'),
-            'special': document.getElementById('rule-special'),
+            'number': document.getElementById('rule-number')
         };
         passwordInput.addEventListener('input', function() {
             const pass = this.value;
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
             rules.uppercase.classList.toggle('valid', /[A-Z]/.test(pass));
             rules.lowercase.classList.toggle('valid', /[a-z]/.test(pass));
             rules.number.classList.toggle('valid', /[0-9]/.test(pass));
-            rules.special.classList.toggle('valid', /[^A-Za-z0-9]/.test(pass));
         });
     }
 });

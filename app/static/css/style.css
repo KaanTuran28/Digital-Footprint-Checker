@@ -1,0 +1,229 @@
+/* =========================================
+   1. GENEL AYARLAR VE DÜZEN (LAYOUT)
+   ========================================= */
+:root {
+    /* Marka Rengi (Pico.css override) */
+    --primary: #3949ab;
+    --primary-hover: #283593;
+    --primary-focus: rgba(57, 73, 171, 0.125);
+    --primary-inverse: #fff;
+    /* Kart arkaplanı için hafif ton */
+    --card-bg: #ffffff; 
+}
+
+/* Sayfanın her zaman tam ekranı kaplamasını sağlar (Sticky Footer için) */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* İçerik alanı kalan boşluğu doldurur, footer'ı aşağı iter */
+main.container {
+    flex: 1;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+/* Kartların genel görünümü */
+article {
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Daha yumuşak gölge */
+    border: 1px solid var(--muted-border-color);
+    border-radius: 8px; /* Köşeleri yumuşat */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+article:hover {
+    transform: translateY(-2px); /* Üzerine gelince hafif yukarı kalkar */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================
+   2. KİMLİK DOĞRULAMA (GÖZ İKONU AYARLARI)
+   ========================================= */
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex; /* Input ve ikonu hizalar */
+    align-items: center;
+}
+
+/* Şifre inputunun kendisine özel ayar */
+.password-wrapper input {
+    width: 100%;
+    margin-bottom: 0; /* Pico'nun varsayılan margin'ini sıfırla */
+    padding-right: 45px; /* KRİTİK: Yazı göz ikonunun altına girmesin diye boşluk */
+}
+
+/* Göz İkonu */
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    /* Dikey ortalama için en güvenli yöntem */
+    top: 50%;
+    transform: translateY(-50%);
+    
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    z-index: 5; /* Her şeyin üstünde dursun */
+    background: transparent;
+    border: none;
+    padding: 0;
+    line-height: 1;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
+/* Şifre Kuralları Kutusu */
+#password-rules {
+    list-style: none;
+    padding: 15px;
+    margin-top: 15px;
+    font-size: 0.85rem;
+    background-color: var(--card-sectionning-background-color);
+    border-radius: 8px;
+    border: 1px solid var(--muted-border-color);
+}
+
+#password-rules li {
+    margin-bottom: 6px;
+    color: #d32f2f; /* Kırmızı */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#password-rules li:last-child {
+    margin-bottom: 0;
+}
+
+/* Kural sağlandığında */
+#password-rules li.valid {
+    color: #388e3c; /* Yeşil */
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+/* =========================================
+   3. DASHBOARD VE ANALİZ KARTLARI
+   ========================================= */
+
+/* Grid içindeki kartların eşit boyda olması ve içeriğin hizalanması */
+.grid article {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* İçeriği yay, butonu alta it */
+    text-align: center;
+}
+
+.grid article hgroup {
+    margin-bottom: 1.5rem;
+}
+
+/* Input alanları ile buton arasına mesafe */
+.grid article input {
+    margin-bottom: 1rem;
+}
+
+/* Tarama Butonu */
+.scan-button {
+    width: 100%;
+    margin-top: auto; /* Butonu her zaman kartın en altına iter */
+}
+
+/* Yükleniyor (Loading) Kutusu */
+#loader {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--card-sectionning-background-color);
+    border: 1px dashed var(--primary);
+    color: var(--primary);
+    margin-bottom: 2rem;
+}
+
+/* Geçmiş Analiz Kartları */
+.past-analysis-card {
+    position: relative;
+    border-left: 6px solid var(--primary);
+    padding-right: 4rem; /* Silme butonu için sağda güvenli alan */
+    text-align: left; /* İçeriği sola yasla */
+    align-items: flex-start;
+}
+
+/* Silme Butonu (Çöp Kutusu) */
+.delete-analysis-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid var(--muted-border-color);
+    color: var(--muted-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.delete-analysis-btn:hover {
+    background-color: #ffebee;
+    color: #d32f2f;
+    border-color: #d32f2f;
+    transform: scale(1.1);
+}
+
+/* =========================================
+   4. RİSK SEVİYESİ RENKLENDİRMELERİ
+   ========================================= */
+
+.risk-Yüksek {
+    color: #c62828;
+    background-color: #ffcdd2;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.risk-Orta {
+    color: #ef6c00;
+    background-color: #ffe0b2;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.risk-Düşük {
+    color: #2e7d32;
+    background-color: #c8e6c9;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* =========================================
+   5. ANA SAYFA (LANDING) ÖZELLEŞTİRMELERİ
+   ========================================= */
+.hero-section {
+    padding: 4rem 1rem;
+}
+
+.hero-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    opacity: 0.85;
+}

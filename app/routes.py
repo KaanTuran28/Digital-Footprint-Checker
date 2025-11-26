@@ -31,8 +31,9 @@ def register():
             flash('Girilen şifreler uyuşmuyor!')
             return redirect(url_for('main.register'))
         
-        if len(password) < 8 or not re.search("[A-Z]", password) or not re.search("[a-z]", password) or not re.search("[0-9]", password) or not re.search("[^A-Za-z0-9]", password):
-            flash('Şifre belirlenen güvenlik kurallarına uymuyor.')
+        # Basit Regex Kontrolleri
+        if len(password) < 8 or not re.search("[A-Z]", password) or not re.search("[a-z]", password) or not re.search("[0-9]", password):
+            flash('Şifre en az 8 karakter, büyük/küçük harf ve rakam içermelidir.')
             return redirect(url_for('main.register'))
 
         if User.query.filter_by(username=username).first() or User.query.filter_by(email=email).first():

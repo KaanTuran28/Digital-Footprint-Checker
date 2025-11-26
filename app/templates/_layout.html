@@ -3,29 +3,32 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    
+    <link rel="stylesheet" href="static/css/style.css">
+    
     <title>Dijital Ayak İzi Analiz Aracı</title>
 </head>
 <body>
     <main class="container">
+        
         <nav>
-            <ul><li><strong>👣 Dijital Ayak İzi Analiz Aracı</strong></li></ul>
             <ul>
-                {% if current_user.is_authenticated %}
-                    <li><a href="{{ url_for('main.dashboard') }}">Kontrol Paneli</a></li>
-                    <li><a href="{{ url_for('main.profile') }}">Profilim</a></li>
-                    <li><a href="{{ url_for('main.logout') }}">Çıkış Yap</a></li>
-                {% else %}
-                    <li><a href="{{ url_for('main.login') }}">Giriş Yap</a></li>
-                    <li><a href="{{ url_for('main.register') }}">Kayıt Ol</a></li>
-                {% endif %}
+                <li><strong>👣 Dijital Ayak İzi Analiz Aracı</strong></li>
             </ul>
+            <ul>
+                <li><a href="login.html">Giriş Yap</a></li>
+                <li><a href="register.html">Kayıt Ol</a></li>
+
+                </ul>
         </nav>
         <hr>
-        {% with messages = get_flashed_messages() %}{% if messages %}{% for message in messages %}
-            <article style="background-color: var(--card-background-color);">{{ message }}</article>
-        {% endfor %}{% endif %}{% endwith %}
-        {% block content %}{% endblock %}
+
+        <div id="content">
+            <p>Bu, sitenin ana şablon (layout) iskeletidir.</p>
+        </div>
+
     </main>
 </body>
 </html>
