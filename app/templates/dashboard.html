@@ -1,106 +1,86 @@
-<!doctype html>
-<html lang="tr">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-    
-    <link rel="stylesheet" href="static/css/style.css">
-    
-    <title>Kontrol Paneli - Dijital Ayak İzi</title>
-</head>
-<body>
-    <main class="container">
-        
-        <nav>
-            <ul>
-                <li><strong>👣 Dijital Ayak İzi Analiz Aracı</strong></li>
-            </ul>
-            <ul>
-                <li><a href="dashboard.html" role="button" class="outline">Kontrol Paneli</a></li>
-                <li><a href="profile.html">Profilim</a></li>
-                <li><a href="index.html">Çıkış Yap</a></li>
-            </ul>
-        </nav>
-        <hr>
+{% extends "_layout.html" %}
 
-        <hgroup>
-            <h1>Kontrol Paneli</h1>
-            <h2>Merhaba, Kullanıcı! Bir platform seçerek analize başlayın.</h2>
-        </hgroup>
-
-        <article id="loader" style="display: none;">
-            <progress></progress>
-            <small>Analiz ediliyor, lütfen bekleyin...</small>
+{% block content %}
+    <hgroup>
+        <h1>Kontrol Paneli</h1>
+        <h2>Merhaba, {{ current_user.username }}! Instagram analizi için aşağıdan başlayın.</h2>
+    </hgroup>
+    
+    <article id="loader" style="display: none;">
+        <progress></progress>
+        <small>Analiz ediliyor, lütfen bekleyin...</small>
+    </article>
+    
+    <div id="new-results-container"></div>
+    
+    <div class="grid">
+        <article>
+            <hgroup>
+                <h4>Instagram</h4>
+                <h6>Herkese açık profilleri tarayın.</h6>
+            </hgroup>
+            <input type="text" id="instagram-username" name="instagram_username" placeholder="Sadece kullanıcı adı (ör: nasa)">
+            <label for="instagram-deep-scan">
+                <input type="checkbox" id="instagram-deep-scan"> Derin Tarama
+            </label>
+            <button class="scan-button" data-platform="instagram">Instagram'ı Tara</button>
         </article>
-
-        <div id="new-results-container"></div>
-
-        <div class="grid">
-            <article>
-                <hgroup>
-                    <h4>📷 Instagram</h4>
-                    <h6>Herkese açık profilleri tarayın.</h6>
-                </hgroup>
-                <input type="text" id="instagram-username" name="instagram_username" placeholder="Sadece kullanıcı adı (ör: nasa)">
-                <label for="instagram-deep-scan">
-                    <input type="checkbox" id="instagram-deep-scan"> Derin Tarama
-                </label>
-                <button class="scan-button" data-platform="instagram">Instagram'ı Tara</button>
-            </article>
-
-            <article>
-                <hgroup>
-                    <h4>🐦 X (Twitter)</h4>
-                    <h6>Herkese açık profilleri tarayın.</h6>
-                </hgroup>
-                <input type="text" id="x-username" name="x_username" placeholder="Sadece kullanıcı adı (ör: Google)">
-                <label for="x-deep-scan">
-                    <input type="checkbox" id="x-deep-scan"> Derin Tarama
-                </label>
-                <button class="scan-button" data-platform="x">X'i Tara</button>
-            </article>
-
-            <article>
-                <hgroup>
-                    <h4>👔 LinkedIn</h4>
-                    <h6>Herkese açık profilleri tarayın.</h6>
-                </hgroup>
-                <input type="text" id="linkedin-username" name="linkedin_username" placeholder="Profil adı (ör: billgates)">
-                <label for="linkedin-deep-scan">
-                    <input type="checkbox" id="linkedin-deep-scan"> Derin Tarama
-                </label>
-                <button class="scan-button" data-platform="linkedin">LinkedIn'i Tara</button>
-            </article>
-        </div>
 
         <article>
-            <h3>Geçmiş Analizler</h3>
-            <div id="past-analyses-list">
-                
-                <article class="past-analysis-card" style="margin-bottom: 1rem; position: relative;">
-                    <button class="delete-analysis-btn secondary outline" style="position: absolute; top: 1rem; right: 1rem; padding: 0.2rem 0.5rem; border-radius: 50%;" aria-label="Sil">🗑️</button>
-                    
-                    <h5 style="margin-bottom: 0.5rem;">26 Kasım 2025 14:30 Tarihli Analiz</h5>
-                    
-                    <p style="margin-bottom: 0;"><strong>Taranan Profiller:</strong></p>
-                    <ul>
-                        <li>
-                            Instagram: <a href="analysis_detail.html">nasa</a> (Düşük Risk)
-                        </li>
-                        <li>
-                            X: <a href="analysis_detail.html">ElonMusk</a> (Yüksek Risk)
-                        </li>
-                    </ul>
-                    <a href="analysis_detail.html" role="button" class="contrast outline">Detayları Görüntüle</a>
-                </article>
-
-                </div>
+            <hgroup>
+                <h4>X (Twitter)</h4>
+                <h6>Herkese açık profilleri tarayın.</h6>
+            </hgroup>
+            <input type="text" id="x-username" name="x_username" placeholder="Sadece kullanıcı adı (ör: Google)">
+            <label for="x-deep-scan">
+                <input type="checkbox" id="x-deep-scan"> Derin Tarama
+            </label>
+            <button class="scan-button" data-platform="x">X'i Tara</button>
         </article>
 
-        <script src="static/js/dashboard.js"></script>
+        <article>
+            <hgroup>
+                <h4>LinkedIn</h4>
+                <h6>Herkese açık profilleri tarayın.</h6>
+            </hgroup>
+            <input type="text" id="linkedin-username" name="linkedin_username" placeholder="Profil adı (ör: billgates)">
+            <label for="linkedin-deep-scan">
+                <input type="checkbox" id="linkedin-deep-scan"> Derin Tarama
+            </label>
+            <button class="scan-button" data-platform="linkedin">LinkedIn'i Tara</button>
+        </article>
+    </div>
 
-    </main>
-</body>
-</html>
+    <article>
+        <h3>Geçmiş Analizler</h3>
+        <div id="past-analyses-list">
+            {% if past_analyses %}
+                {% for analysis in past_analyses %}
+                <article class="past-analysis-card" style="margin-bottom: 1rem; position: relative;">
+                    <button class="delete-analysis-btn secondary outline" data-analysis-id="{{ analysis.id }}" style="position: absolute; top: 1rem; right: 1rem; padding: 0.2rem 0.5rem; border-radius: 50%;" aria-label="Sil">🗑️</button>
+                    <h5 style="margin-bottom: 0.5rem;">{{ analysis.created_at.strftime('%d-%m-%Y %H:%M') }} Tarihli Analiz</h5>
+                    <p style="margin-bottom: 0;"><strong>Sonuçlar:</strong></p>
+                    <ul>
+                        {% for item in analysis.items %}
+                            <li>
+                                {{ item.platform.capitalize() }}: 
+                                <a href="{{ url_for('main.view_analysis', analysis_id=analysis.id) }}">{{ item.profile_username }}</a> 
+                                ({{ item.risk_level }} Risk - {{ item.risk_score }}/100)
+                            </li>
+                        {% else %}
+                            <li>Sonuç bulunamadı.</li>
+                        {% endfor %}
+                    </ul>
+                    <a href="{{ url_for('main.view_analysis', analysis_id=analysis.id) }}" role="button" class="contrast outline">Detayları Görüntüle</a>
+                </article>
+                {% endfor %}
+            {% else %}
+                <div style="text-align: center; padding: 2rem; border: 1px dashed var(--muted-border-color); border-radius: var(--border-radius);">
+                    <p><strong>Henüz bir analiz yapmadınız.</strong></p>
+                </div>
+            {% endif %}
+        </div>
+    </article>
+    
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

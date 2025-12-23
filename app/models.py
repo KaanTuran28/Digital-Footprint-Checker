@@ -10,6 +10,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    # İlişki: Bir kullanıcının birden çok analizi olabilir
     analyses = db.relationship('Analysis', backref='user', lazy=True, cascade="all, delete-orphan")
 
     def set_password(self, password):
@@ -23,6 +24,7 @@ class Analysis(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    # İlişki: Bir analizin birden çok sonucu (item) olabilir
     items = db.relationship('AnalysisItem', backref='analysis', lazy=True, cascade="all, delete-orphan")
 
 class AnalysisItem(db.Model):

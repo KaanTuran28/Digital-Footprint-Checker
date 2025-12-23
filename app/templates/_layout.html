@@ -6,7 +6,7 @@
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app/static/css/style.css') }}">
     
     <title>Dijital Ayak İzi Analiz Aracı</title>
 </head>
@@ -18,16 +18,29 @@
                 <li><strong>👣 Dijital Ayak İzi Analiz Aracı</strong></li>
             </ul>
             <ul>
-                <li><a href="login.html">Giriş Yap</a></li>
-                <li><a href="register.html">Kayıt Ol</a></li>
-
-                </ul>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('main.dashboard') }}">Kontrol Paneli</a></li>
+                    <li><a href="{{ url_for('main.profile') }}">Profilim</a></li>
+                    <li><a href="{{ url_for('main.logout') }}">Çıkış Yap</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('main.login') }}">Giriş Yap</a></li>
+                    <li><a href="{{ url_for('main.register') }}">Kayıt Ol</a></li>
+                {% endif %}
+            </ul>
         </nav>
         <hr>
 
-        <div id="content">
-            <p>Bu, sitenin ana şablon (layout) iskeletidir.</p>
-        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <article style="background-color: var(--card-background-color); margin-bottom: 1rem;">
+                        {{ message }}
+                    </article>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
 
     </main>
 </body>
