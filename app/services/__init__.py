@@ -5,6 +5,7 @@ from config import Config
 
 db = SQLAlchemy()
 login_manager = LoginManager()
+# Giriş yapmamış kullanıcıyı yönlendireceğimiz sayfa
 login_manager.login_view = 'main.login' 
 
 def create_app(config_class=Config):
@@ -17,6 +18,7 @@ def create_app(config_class=Config):
     from app.routes import bp as main_blueprint
     app.register_blueprint(main_blueprint)
     
+    # Modelleri içeri aktar ki veritabanı onları tanısın
     from app import models
 
     @login_manager.user_loader

@@ -1,64 +1,67 @@
-<!doctype html>
-<html lang="tr">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-    
-    <link rel="stylesheet" href="static/css/style.css">
-    
-    <title>Kayıt Ol - Dijital Ayak İzi</title>
-</head>
-<body>
-    <main class="container">
+{% extends "_layout.html" %}
+
+{% block content %}
+    <style>
+        /* Bu sayfaya özel ufak stil düzeltmeleri */
+        .password-wrapper { position: relative; width: 100%; }
+        .toggle-password { 
+            position: absolute; 
+            right: 15px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            cursor: pointer; 
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+        #password-rules { 
+            list-style: none; 
+            padding: 10px; 
+            margin-top: 10px; 
+            background: var(--card-sectionning-background-color); 
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        #password-rules li { color: #d32f2f; margin-bottom: 4px; display: flex; align-items: center; gap: 5px; }
+        #password-rules li.valid { color: #388e3c; text-decoration: line-through; opacity: 0.7; }
+    </style>
+
+    <article>
+        <hgroup>
+            <h1>Yeni Hesap Oluştur</h1>
+            <h2>Güvenli bir şifre ile hesabınızı oluşturun.</h2>
+        </hgroup>
         
-        <nav>
-            <ul>
-                <li><strong>👣 Dijital Ayak İzi Analiz Aracı</strong></li>
-            </ul>
-            <ul>
-                <li><a href="login.html">Giriş Yap</a></li>
-                <li><a href="register.html" role="button">Kayıt Ol</a></li>
-            </ul>
-        </nav>
-        <hr>
-
-        <article>
-            <hgroup>
-                <h1>Yeni Hesap Oluştur</h1>
-                <h2>Güvenli bir şifre ile hesabınızı oluşturun.</h2>
-            </hgroup>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Kullanıcı Adı" required>
+            <input type="email" name="email" placeholder="E-posta Adresi" required>
             
-            <form>
-                <input type="text" name="username" placeholder="Kullanıcı Adı" required>
-                <input type="email" name="email" placeholder="E-posta Adresi" required>
-                
-                <label for="password">Şifre</label>
-                <div class="password-wrapper">
-                    <input type="password" id="password" name="password" placeholder="Şifre" required>
-                    <span class="toggle-password">👁️</span>
-                </div>
-                
-                <label for="password2">Şifreyi Doğrula</label>
-                <div class="password-wrapper">
-                    <input type="password" id="password2" name="password2" placeholder="Şifreyi Tekrar Girin" required>
-                    <span class="toggle-password">👁️</span>
-                </div>
-                
-                <ul id="password-rules">
-                    <li id="rule-length">En az 8 karakter uzunluğunda olmalı</li>
-                    <li id="rule-uppercase">En az bir büyük harf (A-Z) içermeli</li>
-                    <li id="rule-lowercase">En az bir küçük harf (a-z) içermeli</li>
-                    <li id="rule-number">En az bir rakam (0-9) içermeli</li>
-                </ul>
-                
-                <button type="submit">Kayıt Ol</button>
-            </form>
-        </article>
+            <label for="password">Şifre</label>
+            <div class="password-wrapper">
+                <input type="password" id="password" name="password" placeholder="Şifre" required>
+                <span class="toggle-password">👁️</span>
+            </div>
+            
+            <label for="password2">Şifreyi Doğrula</label>
+            <div class="password-wrapper">
+                <input type="password" id="password2" name="password2" placeholder="Şifreyi Tekrar Girin" required>
+                <span class="toggle-password">👁️</span>
+            </div>
+            
+            <ul id="password-rules">
+                <li id="rule-length">En az 8 karakter</li>
+                <li id="rule-uppercase">En az bir büyük harf (A-Z)</li>
+                <li id="rule-lowercase">En az bir küçük harf (a-z)</li>
+                <li id="rule-number">En az bir rakam (0-9)</li>
+                <li id="rule-special">En az bir özel karakter (!, @, # vb.)</li>
+            </ul>
+            
+            <button type="submit">Kayıt Ol</button>
+        </form>
+        
+        <footer style="text-align: center; margin-top: 1rem;">
+            <small>Zaten hesabınız var mı? <a href="{{ url_for('main.login') }}">Giriş Yap</a></small>
+        </footer>
+    </article>
 
-        <script src="static/js/auth.js"></script>
-
-    </main>
-</body>
-</html>
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}
