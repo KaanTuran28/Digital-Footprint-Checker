@@ -45,31 +45,31 @@ source .venv/bin/activate
 
 ## Gerekli Kütüphaneleri Yükleyin
 
-pip install -r requirements.txt
+* pip install -r requirements.txt
 
 ## Playwright Tarayıcılarını Kurun
 
-playwright install
-playwright install-deps
+* playwright install
+* playwright install-deps
 
 ## .env Dosyasını Oluşturun
 
-SECRET_KEY=gizli_anahtariniz_buraya
-DATABASE_URL=sqlite:///site.db
+* SECRET_KEY=gizli_anahtariniz_buraya
+* DATABASE_URL=sqlite:///site.db
 
 # Bot Hesap Bilgileri (Fake hesap kullanmanız önerilir)
-IG_USERNAME=fake_insta_kullanici
-IG_PASSWORD=sifre123
-TW_USERNAME=fake_twitter_kullanici
-TW_PASSWORD=sifre123
-LINKEDIN_EMAIL=fake_linkedin@email.com
-LINKEDIN_PASSWORD=sifre123
+* IG_USERNAME=fake_insta_kullanici
+* IG_PASSWORD=sifre123
+* TW_USERNAME=fake_twitter_kullanici
+* TW_PASSWORD=sifre123
+* LINKEDIN_EMAIL=fake_linkedin@email.com
+* LINKEDIN_PASSWORD=sifre123
 
 ## Veritabanını Başlatın
 
-python init_db.py
+* python init_db.py
 
 ## Uygulamayı Çalıştırın
 
-python run.py
-Tarayıcınızda http://127.0.0.1:5000 adresine gidin.
+* python run.py
+* Tarayıcınızda http://127.0.0.1:5000 adresine gidin.
