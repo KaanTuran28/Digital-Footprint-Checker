@@ -38,9 +38,9 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.
 ## Sanal Ortamı (Virtualenv) Oluşturun
 
 python -m venv .venv
-# Windows için:
+### Windows için:
 .venv\Scripts\activate
-# Mac/Linux için:
+### Mac/Linux için:
 source .venv/bin/activate
 
 ## Gerekli Kütüphaneleri Yükleyin
