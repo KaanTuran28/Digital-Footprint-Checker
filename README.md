@@ -7,8 +7,6 @@
 
 <p align="center"><b><a href="#english">English</a></b> · <b><a href="#türkçe">Türkçe</a></b></p>
 
-> **Graduation project.**
-
 ---
 
 ## English
