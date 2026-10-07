@@ -204,7 +204,7 @@ class RiskAnalyzer:
             },
             "UNIVERSITY_TR": {
                 # Üniversite ve Kısaltmalar
-                "regex": r'\b(Üniversite|University|Uni|Kampüs|Campus|Fakülte|SCÜ|CÜ|ODTÜ|İTÜ|BOUN|YTÜ|Hacettepe|Bilkent|Harvard|MIT)\b',
+                "regex": r'\b(Üniversite|University|Uni|Kampüs|Campus|Fakülte|ODTÜ|İTÜ|BOUN|YTÜ|Hacettepe|Bilkent|Harvard|MIT)\b',
                 "weight": 30,
                 "flags": re.IGNORECASE,
                 "category": "EĞİTİM",
