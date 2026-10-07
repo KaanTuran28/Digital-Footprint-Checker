@@ -184,7 +184,7 @@ class RiskAnalyzer:
             },
             "LOCATION_CITY": {
                 # Şehirler
-                "regex": r'\b(Istanbul|Ankara|Izmir|Sivas|Bursa|Antalya|London|New York|Paris|Berlin|Tokyo|Moscow|Dubai|Rome|Amsterdam)\b',
+                "regex": r'\b(Istanbul|Ankara|Izmir|Adana|Bursa|Antalya|London|New York|Paris|Berlin|Tokyo|Moscow|Dubai|Rome|Amsterdam)\b',
                 "weight": 20,
                 "flags": re.IGNORECASE,
                 "category": "KONUM",
